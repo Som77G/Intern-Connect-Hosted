@@ -5,7 +5,7 @@ let socket; // Declare a variable to store the socket instance
 const createSocketInstance = () => {
   const {user}= useAdminContext();
 
-  return io("http://localhost:3000", {
+  return io("https://intern-connect.onrender.com", {
     autoConnect: false,
     withCredentials: true,
     query: {
