@@ -47,25 +47,7 @@ app.use("/api/student", studentRouter);
 app.use("/api/anonymous", anonymousRouter);
 app.use("/api/job", jobRouter);
 app.use("/api/application", applicationRouter);
-app.get('/', async (req, res) => {
-    // res.send('Hello, World!');
 
-    try {
-        const queryi = `
-        SELECT * FROM users_student
-        `
-
-        const users = await query({
-            query: queryi,
-            values: []
-        });
-
-        res.json(users);
-    } catch (error) {
-        console.log("helllo error")
-        res.status(500).json({ message: error.message });
-    }
-});
 
 const server = app.listen(process.env.PORT, () => {
     console.log("connected to db & listening on port", process.env.PORT);

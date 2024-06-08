@@ -101,7 +101,7 @@ const login = async (req, res) => {
         }
 
         // Set cookies and send response
-        res.cookie("token", token, { httpOnly: true });
+        res.cookie("token", token, { httpOnly: true, secure:true, sameSite: 'none' });
         return res.status(200).json({ message: user[0], userType: userType, status: 200 });
     } catch (error) {
         console.error("Error processing POST request:", error);
@@ -146,7 +146,9 @@ const logout = async (req, res) => {
     try {
         res.cookie("token", "", {
             httpOnly: true,
-            expiresIn: new Date(0)
+            expiresIn: new Date(0),
+            secure:true, 
+            sameSite: 'none'
         });
         return res.status(200).json({ status: 200, message: "Successfully logout" });
     } catch (error) {
